@@ -1,0 +1,175 @@
+-- Librería Inicial
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Source.Lua"))()
+local Window = Library:MakeWindow({
+    Title = "MrCritcksHub",
+    SubTitle = "by mrcritcks",
+    SaveFolder = "MyScriptHubSettings"
+})
+
+-- Tab Principal
+local FarmingTab = Window:MakeTab({"Farming", "Main Features"})
+local ShoppingTab = Window:MakeTab({"Shopping", "Buy Items"})
+local MiscTab = Window:MakeTab({"Misc", "Other Features"})
+
+-- Sección de Farming
+FarmingTab:AddToggle({
+    Name = "Auto Farm",
+    Callback = function(Value)
+        getgenv().AutoFarm = Value
+        if Value then
+            -- Lógica para comenzar a farmear
+            print("Auto Farm Activado")
+            AutoFarm()
+        else
+            print("Auto Farm Desactivado")
+        end
+    end
+})
+
+FarmingTab:AddToggle({
+    Name = "Auto Collect Fruits",
+    Callback = function(Value)
+        getgenv().AutoFruit = Value
+        if Value then
+            print("Auto Collect Fruits Activado")
+            AutoFruit()
+        end
+    end
+})
+
+FarmingTab:AddToggle({
+    Name = "Auto Katakuri Boss",
+    Callback = function(Value)
+        getgenv().AutoKatakuri = Value
+        if Value then
+            print("Auto Katakuri Activado")
+            AutoKatakuri()
+        end
+    end
+})
+
+FarmingTab:AddToggle({
+    Name = "Auto Dough King",
+    Callback = function(Value)
+        getgenv().AutoDoughKing = Value
+        if Value then
+            print("Auto Dough King Activado")
+            AutoDoughKing()
+        end
+    end
+})
+
+FarmingTab:AddToggle({
+    Name = "Auto Boss",
+    Callback = function(Value)
+        getgenv().AutoBoss = Value
+        if Value then
+            print("Auto Boss Activado")
+            AutoBoss()
+        end
+    end
+})
+
+FarmingTab:AddToggle({
+    Name = "Auto Sea Events",
+    Callback = function(Value)
+        getgenv().AutoSeaEvents = Value
+        if Value then
+            print("Auto Sea Events Activado")
+            AutoSeaEvents()
+        end
+    end
+})
+
+-- Sección de Shopping
+ShoppingTab:AddButton({
+    Name = "Comprar Todos los Estilos de Pelea",
+    Callback = function()
+        BuyAllFightingStyles()
+    end
+})
+
+ShoppingTab:AddButton({
+    Name = "Comprar Todas las Armas",
+    Callback = function()
+        BuyAllWeapons()
+    end
+})
+
+ShoppingTab:AddButton({
+    Name = "Reroll Raza (Bones)",
+    Callback = function()
+        BonesRaceReroll()
+    end
+})
+
+ShoppingTab:AddButton({
+    Name = "Reset Stats",
+    Callback = function()
+        ResetStats()
+    end
+})
+
+-- Sección de Misc
+MiscTab:AddButton({
+    Name = "Hop Server",
+    Callback = function()
+        ServerHop()
+    end
+})
+
+MiscTab:AddButton({
+    Name = "Hop a Servidor con Menor Número de Jugadores",
+    Callback = function()
+        LowerPlayerServerHop()
+    end
+})
+
+local JobId = ""
+MiscTab:AddTextBox({
+    Name = "Introducir Job ID",
+    Default = "",
+    PlaceholderText = "Job ID",
+    Callback = function(Value)
+        JobId = Value
+    end
+})
+
+MiscTab:AddButton({
+    Name = "Unirse a Job ID",
+    Callback = function()
+        JoinServerWithJobId(JobId)
+    end
+})
+
+-- Funciones (Ejemplos básicos, necesitan ser completados según la lógica del juego)
+function AutoFarm()
+    -- Lógica para Auto Farm
+    while getgenv().AutoFarm do
+        wait(1) -- Esperar un segundo entre acciones
+        print("Farm in progress...")
+    end
+end
+
+function AutoFruit()
+    -- Lógica para recolección de frutas
+    while getgenv().AutoFruit do
+        wait(1)
+        print("Recolección de frutas en proceso...")
+    end
+end
+
+function BuyAllFightingStyles()
+    -- Lógica para comprar todos los estilos de pelea
+    print("Comprando todos los estilos de pelea...")
+end
+
+function ServerHop()
+    -- Lógica para cambiar de servidor
+    print("Cambiando a otro servidor...")
+end
+
+function JoinServerWithJobId(JobId)
+    -- Lógica para unirse a un servidor específico con el Job ID
+    print("Uniéndose al servidor con Job ID: " .. JobId)
+end
